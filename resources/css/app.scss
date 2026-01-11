@@ -1,0 +1,80 @@
+// @import "bootstrap/scss/bootstrap";
+
+// :root {
+//     --primary-color: #c63f39;
+//     --sidebar-color: #434a50;
+//     --sidebar-text: #ffffff;
+//     --sidebar-hover: rgba(255, 255, 255, 0.1);
+// }
+
+// body {
+//     background-color: #f8f9fa;
+//     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+// }
+
+// .sidebar {
+//     background-color: var(--sidebar-color);
+//     color: var(--sidebar-text);
+//     min-height: 100vh;
+//     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+// }
+
+// .sidebar .nav-link {
+//     color: rgba(255, 255, 255, 0.8);
+//     padding: 12px 20px;
+//     border-radius: 0;
+//     transition: all 0.3s;
+// }
+
+// .sidebar .nav-link:hover,
+// .sidebar .nav-link.active {
+//     color: #fff;
+//     background-color: var(--sidebar-hover);
+//     border-left: 4px solid var(--primary-color);
+// }
+
+// .sidebar .nav-link i {
+//     width: 25px;
+//     text-align: center;
+//     margin-right: 10px;
+// }
+
+// .sidebar-brand {
+//     padding: 20px;
+//     text-align: center;
+//     font-size: 1.2rem;
+//     font-weight: bold;
+//     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+//     background-color: #c63f39; /* Brand header red as per theme accent */
+//     color: white;
+// }
+
+// .main-header {
+//     background-color: #fff;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+//     padding: 15px 30px;
+// }
+
+// .content-wrapper {
+//     padding: 30px;
+// }
+
+// .btn-primary {
+//     background-color: var(--primary-color);
+//     border-color: var(--primary-color);
+// }
+
+// .btn-primary:hover {
+//     background-color: #a5322d;
+//     border-color: #a5322d;
+// }
+
+// .text-primary {
+//     color: var(--primary-color) !important;
+// }
+
+// /* Accordion/Collapse in Sidebar */
+// .sidebar .collapse .nav-link {
+//     padding-left: 50px;
+//     font-size: 0.9em;
+// }

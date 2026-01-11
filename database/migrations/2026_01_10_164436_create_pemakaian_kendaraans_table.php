@@ -16,18 +16,18 @@ return new class extends Migration
             $table->charset = 'armscii8';
             $table->collation = 'armscii8_general_ci';
 
-            $table->id(); 
-            
+            $table->id();
+
             $table->foreignId('id_kendaraan')
-                  ->constrained('kendaraan')
-                  ->onDelete('cascade');
-            
+                ->constrained('kendaraan')
+                ->onDelete('cascade');
+
             $table->tinyInteger('bulan')->comment('1-12');
-            
+
             $table->integer('tahun');
-            
+
             $table->integer('jumlah_transaksi')->default(0);
-            
+
             $table->timestamps();
 
             $table->unique(['id_kendaraan', 'bulan', 'tahun'], 'unique_pemakaian');
