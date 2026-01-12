@@ -24,5 +24,8 @@ Route::get('/peramalan-smp', [PeramalanSmaController::class, 'index'])->name('pe
 Route::post('/peramalan-smp', [PeramalanSmaController::class, 'process'])->name('peramalan_sma.process');
 Route::post('/peramalan-smp/store', [PeramalanSmaController::class, 'store'])->name('peramalan_sma.store');
 Route::delete('/peramalan-smp/{id}', [PeramalanSmaController::class, 'destroy'])->name('peramalan_sma.destroy');
-Route::get('/peramalan-tes', [PeramalanTesController::class, 'index']);
+Route::get('/peramalan-tes', [PeramalanTesController::class, 'index'])->name('peramalan_tes.index');
+Route::post('/peramalan-tes', [PeramalanTesController::class, 'process'])->name('peramalan_tes.process');
+Route::post('/peramalan-tes/store', [PeramalanTesController::class, 'store'])->name('peramalan_tes.store');
+Route::delete('/peramalan-tes/{id}', [PeramalanTesController::class, 'destroy'])->name('peramalan_tes.destroy');
 Route::get('/perbandingan', [PerbandinganController::class, 'index']);
