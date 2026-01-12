@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
+use App\Models\PemakaianKendaraan;
 
 class InputDataController extends Controller
 {
     public function index()
     {
-        $kendaraans = \App\Models\Kendaraan::all();
-        $pemakaian = \App\Models\PemakaianKendaraan::with('kendaraan')->orderBy('tahun', 'desc')->orderBy('bulan', 'desc')->get();
+        $kendaraans = Kendaraan::all();
+        $pemakaian = PemakaianKendaraan::with('kendaraan')->orderBy('tahun', 'desc')->orderBy('bulan', 'desc')->get();
 
         // Prepare Chart Data
         $chartData = $pemakaian->groupBy('kendaraan.nama_kendaraan')->map(function ($row) {
@@ -32,7 +34,7 @@ class InputDataController extends Controller
         ]);
 
         // Check for duplicate
-        $exists = \App\Models\PemakaianKendaraan::where('id_kendaraan', $request->id_kendaraan)
+        $exists = PemakaianKendaraan::where('id_kendaraan', $request->id_kendaraan)
             ->where('bulan', $request->bulan)
             ->where('tahun', $request->tahun)
             ->exists();
@@ -41,7 +43,7 @@ class InputDataController extends Controller
             return back()->with('error', 'Data untuk kendaraan, bulan, dan tahun tersebut sudah ada.');
         }
 
-        \App\Models\PemakaianKendaraan::create($request->all());
+        PemakaianKendaraan::create($request->all());
 
         return redirect()->route('input_data.index')->with('success', 'Data pemakaian berhasil ditambahkan');
     }
@@ -55,11 +57,11 @@ class InputDataController extends Controller
             'jumlah_transaksi' => 'required|integer|min:0',
         ]);
 
-        $data = \App\Models\PemakaianKendaraan::find($id);
+        $data = PemakaianKendaraan::findOrFail($id);
 
         // Check for duplicate if changing keys
         if ($data->id_kendaraan != $request->id_kendaraan || $data->bulan != $request->bulan || $data->tahun != $request->tahun) {
-            $exists = \App\Models\PemakaianKendaraan::where('id_kendaraan', $request->id_kendaraan)
+            $exists = PemakaianKendaraan::where('id_kendaraan', $request->id_kendaraan)
                 ->where('bulan', $request->bulan)
                 ->where('tahun', $request->tahun)
                 ->where('id', '!=', $id)
@@ -76,7 +78,7 @@ class InputDataController extends Controller
 
     public function destroy($id)
     {
-        \App\Models\PemakaianKendaraan::find($id)->delete();
+        PemakaianKendaraan::findOrFail($id)->delete();
         return redirect()->route('input_data.index')->with('success', 'Data pemakaian berhasil dihapus');
     }
 }

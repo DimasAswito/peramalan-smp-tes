@@ -34,7 +34,7 @@ class ManagementKendaraan extends Controller
             'nama_kendaraan' => 'required|string|max:255',
         ]);
 
-        $kendaraan = Kendaraan::find($id);
+        $kendaraan = Kendaraan::findOrFail($id);
         $kendaraan->update([
             'nama_kendaraan' => $request->nama_kendaraan,
         ]);
@@ -44,7 +44,7 @@ class ManagementKendaraan extends Controller
 
     public function destroy($id)
     {
-        Kendaraan::find($id)->delete();
+        Kendaraan::findOrFail($id)->delete();
         return redirect()->route('management_kendaraan.index')->with('success', 'Kendaraan berhasil dihapus');
     }
 }
