@@ -1,19 +1,19 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #33393f;">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center" href="{{ url('/') }}" style="height: auto; padding: 1rem 0;">
+                <div class="sidebar-brand-icon">
+                    <img src="{{ url('/template/img/logorental.png') }}" alt="Logo Rental" style="height: 50px; width: 120px;">
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3 mt-2">MSJ TRANS</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -28,15 +28,22 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/management-kendaraan') }}">
-                    <i class="fas fa-fw fa-car"></i>
-                    <span>Daftar Kendaraan</span>
+            <li class="nav-item {{ Request::is('management-kendaraan*') || Request::is('input-data*') ? 'active' : '' }}">
+                <a class="nav-link {{ Request::is('management-kendaraan*') || Request::is('input-data*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapseManagement"
+                    aria-expanded="{{ Request::is('management-kendaraan*') || Request::is('input-data*') ? 'true' : 'false' }}" aria-controls="collapseManagement">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Management Data</span>
                 </a>
-                <a class="nav-link" href="{{ url('/input-data') }}">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Daftar Transaksi</span>
-                </a>
+                <div id="collapseManagement" class="collapse {{ Request::is('management-kendaraan*') || Request::is('input-data*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                         <a class="collapse-item {{ Request::is('management-kendaraan*') ? 'active' : '' }}" href="{{ url('/management-kendaraan') }}">
+                            <i class="fas fa-fw fa-car mr-2"></i>Daftar Kendaraan
+                        </a>
+                        <a class="collapse-item {{ Request::is('input-data*') ? 'active' : '' }}" href="{{ url('/input-data') }}">
+                            <i class="fas fa-fw fa-list mr-2"></i>Daftar Transaksi
+                        </a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -48,15 +55,18 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/peramalan-smp') }}">
-                    <i class="fas fa-fw fa-car"></i>
-                    <span>Simple Moving Average</span>
+             <li class="nav-item {{ Request::is('peramalan-smp*') || Request::is('peramalan-tes*') ? 'active' : '' }}">
+                <a class="nav-link {{ Request::is('peramalan-smp*') || Request::is('peramalan-tes*') ? '' : 'collapsed' }}" href="#" data-toggle="collapse" data-target="#collapsePeramalan"
+                    aria-expanded="{{ Request::is('peramalan-smp*') || Request::is('peramalan-tes*') ? 'true' : 'false' }}" aria-controls="collapsePeramalan">
+                    <i class="fas fa-fw fa-chart-line"></i>
+                    <span>Metode Peramalan</span>
                 </a>
-                <a class="nav-link" href="{{ url('/peramalan-tes') }}">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Triple Exponential Smoothing</span>
-                </a>
+                <div id="collapsePeramalan" class="collapse {{ Request::is('peramalan-smp*') || Request::is('peramalan-tes*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::is('peramalan-smp*') ? 'active' : '' }}" href="{{ url('/peramalan-smp') }}">Simple Moving Average</a>
+                        <a class="collapse-item {{ Request::is('peramalan-tes*') ? 'active' : '' }}" href="{{ url('/peramalan-tes') }}" style="white-space: normal;">Triple Exponential Smoothing</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -68,14 +78,14 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {{ Request::is('perbandingan*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/perbandingan') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Perbandingan</span>
                 </a>
             </li>
 
-            <!-- Divider -->
+            {{-- <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -161,7 +171,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block"> --}}
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
