@@ -245,7 +245,7 @@ class PeramalanSmaController extends Controller
 
     public function destroy($id)
     {
-        PeramalanSma::find($id)->delete();
+        PeramalanSma::findOrFail($id)->delete();
         return redirect()->route('peramalan_sma.index')->with('success', 'Riwayat peramalan berhasil dihapus.');
     }
 

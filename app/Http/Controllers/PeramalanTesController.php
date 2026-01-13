@@ -328,7 +328,7 @@ class PeramalanTesController extends Controller
 
     public function destroy($id)
     {
-        \App\Models\PeramalanTes::find($id)->delete();
+        \App\Models\PeramalanTes::findOrFail($id)->delete();
         return redirect()->route('peramalan_tes.index')->with('success', 'Riwayat peramalan berhasil dihapus.');
     }
 

@@ -28,4 +28,7 @@ Route::get('/peramalan-tes', [PeramalanTesController::class, 'index'])->name('pe
 Route::post('/peramalan-tes', [PeramalanTesController::class, 'process'])->name('peramalan_tes.process');
 Route::post('/peramalan-tes/store', [PeramalanTesController::class, 'store'])->name('peramalan_tes.store');
 Route::delete('/peramalan-tes/{id}', [PeramalanTesController::class, 'destroy'])->name('peramalan_tes.destroy');
-Route::get('/perbandingan', [PerbandinganController::class, 'index']);
+Route::get('/perbandingan', [PerbandinganController::class, 'index'])->name('perbandingan.index');
+Route::post('/perbandingan', [PerbandinganController::class, 'process'])->name('perbandingan.process');
+Route::post('/perbandingan/store', [PerbandinganController::class, 'store'])->name('perbandingan.store');
+Route::delete('/perbandingan/{id}', [PerbandinganController::class, 'destroy'])->name('perbandingan.destroy');
